@@ -1,0 +1,57 @@
+<template name="recipe">
+    <div class="row recipe">
+		<div class="col s2 input-field">
+			<a class="linkback btn smalladd grey lighten-3 grey-text text-darken-2 waves-effect waves-light" type="button">
+				<i class="material-icons">arrow_back</i>
+			</a>
+		</div>
+
+		<div class="col s8">
+
+		{{#if recipe.count}}
+			{{#each recipe}}
+			<h2 class="hand">{{{label}}}</h2>
+			{{#each tags}}
+				<span class="tags">{{this}}</span>
+			{{/each}}
+
+			<h6 class="hand">Cooking Data</h6>
+			<div class="valign-wrapper">
+				<i class="material-icons lined">timer</i>
+				{{data.[0]}}
+
+				<i class="material-icons orange-text lined">timer</i>
+				{{data.[1]}}
+
+				<i class="material-icons green-text lined">people</i>
+				{{data.[2]}}
+			</div>
+
+			<h6 class="hand">Ingredients</h6>
+			<ul class="collection">
+				{{#each ingredients}}
+				<li class="collection-item">
+					{{this}}
+				</li>
+				{{/each}}
+			</ul>
+
+			<h6 class="hand">Cooking Steps</h6>
+			<ul class="collection">
+				{{#each process}}
+				<li class="collection-item">
+					{{this}}
+				</li>
+				{{/each}}
+			</ul>
+
+
+			{{/each}}
+		{{else}}
+		{{/if}}
+
+		</div>
+    </div>
+</template>
+
+

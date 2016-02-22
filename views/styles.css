@@ -1,0 +1,239 @@
+.brand-logo, .hand {
+	font-family: 'Pacifico', cursive;
+    text-shadow: 2px 2px 1px rgba(0,0,0,.4);
+}
+
+.brand-logo, .hand {
+    margin-left: 2rem;
+}
+
+.hand {
+    text-shadow: 1px 1px 1px rgba(0,0,0,.3);
+}
+
+.hand.right-align {
+    margin-left: 0;
+    margin-right: 2rem;
+}
+
+h2.hand {
+	font-size: 2em;
+	color: #444;
+}
+.myfood h2.hand {
+	margin: 10px;
+}
+
+h6.hand {
+    margin-left: 0;
+}
+
+.intro {
+	padding: 0 0 0 45px;
+	font-style: italic;
+	font-weight: bold;
+}
+
+.intro:first-child {
+	margin-top: 30px;
+}
+
+
+.material-icons.blh {
+	line-height: 48px;
+}
+
+
+.btn.small {
+	padding:0 1rem;
+}
+
+.btn.smalladd {
+    padding: 0 .5rem;
+    height: 20px;
+    line-height: 20px;
+}
+.btn.smalladd i.material-icons {
+	font-size: 15px;
+}
+
+
+.collection {
+	min-height: 44px;
+}
+
+.collection:before {
+	content: 'No match for these filters...';
+	position: absolute;
+	z-index: 1;
+	display: block;
+	padding: 10px 20px;
+	width: 100%;
+	height: 50px;
+}
+
+ul.shortOf.collection:before {
+	background: #eee;
+	font-style: italic;
+}
+
+
+.collection-item {
+	text-transform: capitalize;
+	position: relative;
+	z-index: 2;
+}
+
+.collection-item.noshowTerm:not(.default),
+.collection-item.noshowTag:not(.default) {
+	display: none;
+}
+
+
+.collection-item .btn {
+	height: 22px;
+	margin: 0 0 0 10px;
+	padding: 0 15px;
+	font-size: 12px;
+	line-height: 22px;
+}
+
+.collection-item .btn i {
+	font-size: 1.1rem;
+}
+
+.collection-item .btn i.left {
+	margin-right: 5px;
+}
+
+.collection-item .btn i.right {
+	margin-left: 5px;
+}
+
+ul.shortOf .collection-item,
+.collection-item.nif {
+	background: #eee;
+	font-style: italic;
+}
+
+.collection.soif .collection-item.nif {
+	display:none;
+}
+
+
+.row .col.nofloat {
+    float: none;
+    padding: 0;
+    height: 20px;
+}
+
+
+.tags {
+	font-size: 10px;
+    background: #ccc;
+    border-radius: 2px;
+    padding: 0 5px;
+}
+
+.tt-menu {
+	background: #fff;
+	box-shadow: 2px 2px 1px rgba(0,0,0,.4);
+	border: 1px solid #ddd;
+	border-radius: 2px;
+}
+
+.tt-suggestion {
+	padding: 3px 5px;
+	border-bottom: 1px solid #ddd;
+}
+
+.tt-suggestion:last-child {
+	border-radius: 2px 2px 0 0;
+}
+
+.tt-suggestion:last-child {
+	border-radius: 0 0 2px 2px;
+	border-bottom: none;
+}
+
+.tt-cursor {
+	background: rgba(100,100,100,.1);
+}
+
+
+.boxed {
+	background: #f5f5f5;
+	border: 1px solid #eee;
+	border-radius: 3px;
+}
+
+.boxed.ilist {
+	background: #f0ffe0;
+}
+
+
+.padded {
+	padding: 10px 22px;
+}
+
+#ingredients {
+	margin-top: 10px;
+}
+
+label.small {
+	font-size: 12px;
+	line-height: 15px;
+	margin:-15px
+}
+
+label.small span {
+	font-family: "Roboto", sans-serif;
+    font-weight: normal;
+    width: 90px;
+	margin: 2px 0 0 -10px;
+	display: block;
+	font-size: 10px;
+	line-height: 10px;
+}
+
+.ilist span.chip {
+	margin: 5px 0;
+}
+.ilist span.chip + input {
+	width: 1px !important;
+	visibility: hidden !important;
+}
+
+.clearit {
+	clear: both;
+}
+
+.lined {
+	margin: 0 5px 0 25px;
+}
+.lined:first-child {
+	margin: 0 5px 0 0;
+}
+
+h2.hand .select-wrapper {
+	float: right;
+	width: 155px;
+	margin-right: 25px;
+	font-family: "Roboto", sans-serif;
+    font-weight: normal;
+}
+
+
+.modal {
+	overflow: hidden;
+    background: #fff;
+}
+.modim {
+    float: right;
+}
+
+
+#loadingimport {
+	margin: 5px 0 0 47%;
+    position: absolute;
+}

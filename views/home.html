@@ -1,0 +1,66 @@
+<template name="home">
+	<div class="row home">
+		<div class="col s6">
+			<p class="intro grey-text text-darken-3"><i class="green-text material-icons left">find_in_page</i>Find what to cook!</p>
+			<p class="intro grey-text text-darken-2"><i class="orange-text material-icons left">kitchen</i>Manage your food stocklist</p>
+			<p class="intro grey-text text-darken-1"><i class="blue-text material-icons left">playlist_add_check</i>Store, import and share your recipes</p>
+			<p class="intro grey-text"><i class="red-text text-lighten-2 material-icons left">check_box</i>Edit and share your shopping lists</p>
+		</div>
+		<div class="col s6">
+			<h2 class="hand blue-text text-darken-2">What shall we cook today?</h2>
+			<div class="boxed padded">
+				<p>
+					Click here to choose what food ingredients you'd like to use,
+					and find the recipes that will make your day!
+				</p>
+				<a class="btn waves-effect waves-light green right" href="{{url 'whattocook'}}"><i class="material-icons">arrow_forward</i></a>
+			</div>
+		</div>
+    </div>
+
+	<div class="row">
+		<div class="col s4">
+			<h2 class="hand">My Food</h2>
+			<ul class="collection">
+				{{#if food.count}}
+					{{#each food}}
+					<li class="collection-item">
+						{{{label}}}
+					</li>
+					{{/each}}
+				{{else}}
+					<li class="collection-item">
+						No food in your fridge...
+					</li>
+				{{/if}}
+    		</ul>
+			<a class="btn-floating btn-large waves-effect waves-light green right" href="{{url 'myfood'}}"><i class="material-icons">add</i></a>
+   		</div>
+		<div class="col s4">
+			<h2 class="hand">My Recipes</h2>
+			<ul class="collection">
+				{{#if recipes.count}}
+					{{#each recipes}}
+					<li class="collection-item">
+						{{{label}}}
+					</li>
+					{{/each}}
+				{{else}}
+					<li class="collection-item">
+						No recipes in your fridge...
+					</li>
+				{{/if}}
+    		</ul>
+			<a class="btn-floating btn-large waves-effect waves-light blue right" href="{{url 'myrecipes'}}"><i class="material-icons">add</i></a>
+		</div>
+		<div class="col s4">
+			<h2 class="hand">My Shopping Lists</h2>
+			<ul class="collection">
+	  			{{{lists}}}
+    		</ul>
+			<a class="btn-floating btn-large waves-effect waves-light orange right" href="{{url 'myfood'}}"><i class="material-icons">add</i></a>
+		</div>
+    </div>
+</template>
+
+

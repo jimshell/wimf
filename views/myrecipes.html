@@ -1,0 +1,182 @@
+<template name="myrecipes">
+    <div class="row myrecipes">
+		<div class="col s6">
+			<h2 class="hand">My Recipes</h2>
+
+			<div class="boxed">
+				<div class="col s1 valign-wrapper">
+					<i class="material-icons blh">search</i>
+				</div>
+
+				<div class="col s5">
+					<input id="search" type="search" required>
+				</div>
+
+				<div class="col s6">
+					<select class="showrecipe">
+						<option value="AllItems" selected>All</option>
+						{{#each tagfilter}}
+						<option value="{{this}}">{{this}}</option>
+						{{/each}}
+					</select>
+				</div>
+			</div>
+
+
+			<ul class="collection">
+				{{#if recipes.count}}
+					{{#each recipes}}
+					<li class="collection-item" data-label="{{label}}" data-tags="{{tags}}">
+						<h6 class="hand">{{{label}}}</h6>
+
+						<div class="valign-wrapper">
+							<i class="material-icons lined">timer</i>
+							{{data.[0]}}
+
+							<i class="material-icons orange-text lined">timer</i>
+							{{data.[1]}}
+
+							<i class="material-icons green-text lined">people</i>
+							{{data.[2]}}
+						</div>
+
+						{{#if tags}}
+							<div class="col s12 nofloat">
+								{{#each tags}}
+									<span class="tags">{{this}}</span>
+								{{/each}}
+							</div>
+						{{/if}}
+
+						<div class="col s12 nofloat">
+							<a href="{{url 'recipe'}}/{{_id}}" class="btn smalladd grey lighten-3 grey-text text-darken-2 waves-effect waves-light right" type="button">
+								<i class="material-icons">remove_red_eye</i>
+							</a>
+							<a data-id="{{_id}}" class="deleteRecipe btn smalladd red waves-effect waves-light right" type="button">
+								<i class="material-icons">delete</i>
+							</a>
+						</div>
+
+					</li>
+					{{/each}}
+				{{else}}
+					<li class="collection-item default">
+						No recipe yet...
+					</li>
+				{{/if}}
+    		</ul>
+		</div>
+
+
+		<div class="col s6">
+			<h2 class="hand">
+				Save a Recipe /
+				<select id="importfrom">
+					<option selected value="">Import from...</option>
+					<option value="allrecipes">allrecipes.com</option>
+<!-- 					<option value="foodnetwork">foodnetwork.com</option>
+					<option value="thekitchn">thekitchn.com</option>
+ -->				</select>
+
+			</h2>
+			<form name="addrecipe" action="#">
+				<div class="input-field clearit">
+					<h6 class="hand">Recipe Title</h6>
+					<input id="title" type="text" class="validate" placeholder="Recipe Title">
+				</div>
+
+				<div id="data" class="input-field clearit">
+					<h6 class="hand">Cooking Data</h6>
+					<div class="col s4">
+						<i class="material-icons prefix blh">timer</i>
+						<input type="text" class="validate" placeholder="Preparation Time">
+					</div>
+					<div class="col s4">
+						<i class="material-icons prefix orange-text blh">timer</i>
+						<input type="text" class="validate" placeholder="Cooking Time">
+					</div>
+					<div class="col s4">
+						<i class="material-icons prefix green-text blh">people</i>
+						<input type="text" class="validate" placeholder="Servings">
+					</div>
+				</div>
+
+				<div id="ingredients" class="input-field clearit">
+					<h6 class="hand">Ingredients</h6>
+					<input type="text" class="validate" placeholder="Add ingredient!">
+				</div>
+				<div class="input-field col s1 offset-s11">
+					<a id="addingredient" class="btn smalladd red waves-effect waves-light" type="button">
+						<i class="material-icons">add</i>
+					</a>
+				</div>
+
+
+				<div id="process" class="input-field clearit">
+					<h6 class="hand">Cooking Steps</h6>
+					<input type="text" class="validate" placeholder="Add cooking step!">
+				</div>
+				<div class="input-field col s1 offset-s11">
+					<a id="addstep" class="btn smalladd red waves-effect waves-light" type="button">
+						<i class="material-icons">add</i>
+					</a>
+				</div>
+
+				<div class="input-field clearit">
+					<h6 class="hand">Recipe Tags</h6>
+					<input id="tags" type="text" placeholder="Add tags...">
+				</div>
+
+				<div class="input-field clearit">
+					<h6 class="hand">Share Settings</h6>
+					<select class="sharelevel">
+						<option value="private" selected>Private</option>
+						<option value="chosen">With selected people only</option>
+						<option value="friends">With all Friends</option>
+						<option value="everyone">With everyone</option>
+					</select>
+				</div>
+
+				<div class="input-field clearit">
+					<button class="btn small green waves-effect waves-light right" type="submit" name="action">
+						<i class="material-icons">save</i>
+					</button>
+				</div>
+			</form>
+   		</div>
+		{{dynElUpdate}}
+    </div>
+
+	<!-- Modal Structure -->
+	<div id="importmodal" class="modal">
+		<div class="modal-content">
+			<img class="modim" src=""/>
+			<h4 class="hand">Import from <span class="orange-text lighten-text-2" id="fromsite"></span></h4>
+			<p>Copy-paste the URL of the recipe you want to import, then hit "Import it!"</p>
+			<div class="input-field">
+				<input id="importurl" type="text" value="">
+			</div>
+		</div>
+		<div class="modal-footer">
+			<div id="loadingimport" class="preloader-wrapper small">
+				<div class="spinner-layer spinner-red-only">
+					<div class="circle-clipper left">
+						<div class="circle"></div>
+					</div>
+					<div class="gap-patch">
+						<div class="circle"></div>
+					</div>
+					<div class="circle-clipper right">
+						<div class="circle"></div>
+					</div>
+				</div>
+			</div>
+
+			<a id="doimport" class="modal-action waves-effect waves-green btn-flat">Import it!</a>
+		</div>
+	</div>
+
+
+</template>
+
+

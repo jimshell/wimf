@@ -1,0 +1,126 @@
+<template name="whattocook">
+	<div class="row whattocook">
+		<div class="col s6">
+			<h2 class="hand">I Chose my Ingredients:</h2>
+
+			<div class="col s12 boxed">
+				<div class="col s1 valign-wrapper">
+					<i class="material-icons blh">search</i>
+				</div>
+
+				<div class="col s4">
+					<input id="search" type="search" required>
+				</div>
+
+				<div class="col s4">
+					<select class="showfood">
+						<option value="AllItems" selected>All</option>
+						{{#each tagfilter}}
+						<option value="{{this}}">{{this}}</option>
+						{{/each}}
+					</select>
+				</div>
+
+				<div class="col s3 input-field">
+					<input type="checkbox" checked="checked" id="snif" />
+					<label class="small" for="snif">
+						<span>Show missing ingredients</span>
+					</label>
+				</div>
+
+			</div>
+
+			<ul id="ingredients" class="collection">
+				{{#if food.count}}
+					{{#each food}}
+					<li class="collection-item {{#unless in_fridge}}nif{{/unless}}" data-label="{{label}}" data-tags="{{tags}}">
+						{{{label}}}
+						<input type="checkbox" data-label="{{label}}" id="{{_id}}" />
+						<label class="right" for="{{_id}}"></label>
+      						{{#if tags}}
+							<div class="col s12 nofloat">
+								{{#each tags}}
+									<span class="tags">{{this}}</span>
+								{{/each}}
+							</div>
+						{{/if}}
+					</li>
+					{{/each}}
+				{{else}}
+					<li class="collection-item default">
+						No food in your fridge...
+					</li>
+				{{/if}}
+    		</ul>
+
+		</div>
+
+		<div class="col s6">
+			<h2 class="hand">
+				Ingredient list:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<input type="checkbox" id="allmandatory" />
+				<label class="small" for="allmandatory">
+					<span>Show recipes with all these ingredients</span>
+				</label>
+			</h2>
+
+			<div class="col s12 boxed ilist">
+				<div class="col s1 valign-wrapper">
+					<i class="material-icons blh">list</i>
+				</div>
+				<div class="col s11">
+					<input id="ilist" type="text" disabled>
+				</div>
+			</div>
+
+		</div>
+
+
+		<div class="col s6">
+			<h2 class="hand">I Pick amongst the suggested Recipes:</h2>
+
+			<ul class="collection">
+				{{#if recipes.count}}
+					{{#each recipes}}
+					<li class="collection-item" data-label="{{label}}" data-tags="{{tags}}">
+						<h6 class="hand">{{{label}}}</h6>
+
+						<div class="valign-wrapper">
+							<i class="material-icons lined">timer</i>
+							{{data.[0]}}
+
+							<i class="material-icons orange-text lined">timer</i>
+							{{data.[1]}}
+
+							<i class="material-icons green-text lined">people</i>
+							{{data.[2]}}
+						</div>
+
+						{{#if tags}}
+							<div class="col s12 nofloat">
+								{{#each tags}}
+									<span class="tags">{{this}}</span>
+								{{/each}}
+							</div>
+						{{/if}}
+
+						<div class="col s12 nofloat">
+							<a href="{{url 'recipe'}}/{{_id}}" class="btn smalladd grey lighten-3 grey-text text-darken-2 waves-effect waves-light right" type="button">
+								<i class="material-icons">remove_red_eye</i>
+							</a>
+						</div>
+
+					</li>
+					{{/each}}
+				{{else}}
+					<li class="collection-item default">
+						No recipe found...
+					</li>
+				{{/if}}
+    		</ul>
+		</div>
+		{{dynElUpdate}}
+    </div>
+</template>
+
+
